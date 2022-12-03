@@ -1,7 +1,10 @@
 package view;
 
 import constant.Message;
+import domain.Table;
+import domain.TableRepository;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -34,5 +37,15 @@ public class InputView {
         String mainScreenSelection = scanner.nextLine();
         MainScreenSelection.validate(mainScreenSelection);
         return mainScreenSelection;
+    }
+
+    public static String requestTableNumber() {
+        System.out.println();
+        List<Table> tables = TableRepository.tables();
+        OutputView.printTables(tables);
+        printTitleMessage(Message.REQUEST_TABLE_NUMBER);
+        String tableNumber = scanner.nextLine();
+        TableNumberSelection.validate(tableNumber);
+        return tableNumber;
     }
 }
