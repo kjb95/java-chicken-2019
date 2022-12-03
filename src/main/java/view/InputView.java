@@ -1,6 +1,8 @@
 package view;
 
 import constant.Message;
+import domain.Menu;
+import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 import java.util.Arrays;
@@ -47,5 +49,15 @@ public class InputView {
         String tableNumber = scanner.nextLine();
         TableNumberSelection.validate(tableNumber);
         return tableNumber;
+    }
+
+    public static String requestMenuNumber() {
+        System.out.println();
+        List<Menu> menus = MenuRepository.menus();
+        OutputView.printMenus(menus);
+        printTitleMessage(Message.REQUEST_REGISTER_MENU);
+        String menuNumber = scanner.nextLine();
+        MenuSelection.validate(menuNumber);
+        return menuNumber;
     }
 }
