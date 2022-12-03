@@ -1,5 +1,6 @@
 package view;
 
+import constant.ErrorMessage;
 import domain.Menu;
 import domain.Table;
 import java.util.List;
@@ -35,6 +36,12 @@ public class OutputView {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
         }
+        System.out.println();
+    }
+
+    public static void printErrorMessage(String message) {
+        System.out.println();
+        System.out.printf(ErrorMessage.ERROR_MESSAGE_FORM, message);
         System.out.println();
     }
 }
