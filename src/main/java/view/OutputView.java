@@ -58,4 +58,9 @@ public class OutputView {
         System.out.printf(Message.TITLE_MESSAGE_FORM, selectionTitle);
         System.out.println();
     }
+
+    public static void printPaymentProgress(int parseInt) {
+        String paymentProgress = String.format(Message.PAYMENT_PROGRESS_FORM, parseInt);
+        printTitleMessage(paymentProgress);
+    }
 }

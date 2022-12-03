@@ -67,4 +67,11 @@ public class InputView {
         scanner.nextLine();
         return menuQuantity;
     }
+
+    public static String requestPaymentMethod() {
+        printTitleMessage(Message.PAYMENT_METHOD);
+        String paymentMethod = scanner.nextLine();
+        PaymentMethod.validate(paymentMethod);
+        return paymentMethod;
+    }
 }

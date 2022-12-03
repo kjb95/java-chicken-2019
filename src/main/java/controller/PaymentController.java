@@ -15,6 +15,9 @@ public class PaymentController {
         String tableNumber = Utils.requestInput(InputView::requestTableNumber, OutputView::printErrorMessage);
         List<OrderHistory> orderHistory = paymentService.findOrderHistory(Integer.parseInt(tableNumber));
         OutputView.printOrderHistory(orderHistory);
+        OutputView.printPaymentProgress(Integer.parseInt(tableNumber));
+        String paymentMethod = Utils.requestInput(InputView::requestPaymentMethod, OutputView::printErrorMessage);
+
 
     }
 }
