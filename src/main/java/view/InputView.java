@@ -60,4 +60,11 @@ public class InputView {
         MenuSelection.validate(menuNumber);
         return menuNumber;
     }
+
+    public static int requestMenuQuantity() {
+        printTitleMessage(Message.REQUEST_MENU_QUANTITY);
+        int menuQuantity = scanner.nextInt();
+        scanner.nextLine();
+        return menuQuantity;
+    }
 }

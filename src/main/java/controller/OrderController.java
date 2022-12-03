@@ -13,6 +13,6 @@ public class OrderController {
     public void run() {
         String tableNumber = Utils.requestInput(InputView::requestTableNumber, OutputView::printErrorMessage);
         String menuNumber = Utils.requestInput(InputView::requestMenuNumber, OutputView::printErrorMessage);
-
+        int menuQuantity = InputView.requestMenuQuantity();
     }
 }
