@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class Table {
 
     private final int number;
-    private final Map<Menu, Integer> menuAndQuantity = new HashMap<>();
+    private Map<Menu, Integer> menuAndQuantity = new HashMap<>();
 
     public Table(final int number) {
         this.number = number;
@@ -49,5 +49,41 @@ public class Table {
         int quantity = menuAndQuantity.get(menu);
         int price = menu.getPrice();
         return new OrderHistory(menuName, quantity, price);
+    }
+
+    public int computeFinalPrice(int payMethod) {
+        int bundlesCount = countBundles();
+        int priceBeforeDiscount = sumPrice();
+        double finalPrice = priceBeforeDiscount - bundlesCount * Const.BUNDLE_DISCOUNT;
+        if (payMethod == Const.CASH_PAY_METHOD) {
+            finalPrice *= Const.CASH_DISCOUNT;
+        }
+        return (int) finalPrice;
+    }
+
+    private int countBundles() {
+        return menuAndQuantity.keySet()
+                .stream()
+                .map(menu -> menuAndQuantity.get(menu))
+                .mapToInt(quantity -> quantity / Const.BUNDLE_SIZE)
+                .sum();
+    }
+
+    private int sumPrice() {
+        return menuAndQuantity.keySet()
+                .stream()
+                .map(this::computeOneMenuPrice)
+                .mapToInt(price -> price)
+                .sum();
+    }
+
+    private int computeOneMenuPrice(Menu menu) {
+        int price = menu.getPrice();
+        int quantity = menuAndQuantity.get(menu);
+        return price * quantity;
+    }
+
+    public void clear() {
+        menuAndQuantity = new HashMap<>();
     }
 }

@@ -17,7 +17,7 @@ public class PaymentController {
         OutputView.printOrderHistory(orderHistory);
         OutputView.printPaymentProgress(Integer.parseInt(tableNumber));
         String paymentMethod = Utils.requestInput(InputView::requestPaymentMethod, OutputView::printErrorMessage);
-
+        int finalPrice = paymentService.computeFinalPrice(Integer.parseInt(tableNumber), Integer.parseInt(paymentMethod));
 
     }
 }
