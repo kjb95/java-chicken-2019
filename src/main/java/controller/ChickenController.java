@@ -13,8 +13,9 @@ public class ChickenController {
 
     public ChickenController() {
         OrderController orderController = new OrderController();
+        PaymentController paymentController = new PaymentController();
         selectionNavigator.put(MainScreenSelection.ONE.getSelection(), orderController::run);
-
+        selectionNavigator.put(MainScreenSelection.TWO.getSelection(), paymentController::run);
     }
 
     public void run() {

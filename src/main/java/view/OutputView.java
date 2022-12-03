@@ -1,8 +1,10 @@
 package view;
 
 import constant.ErrorMessage;
+import constant.Message;
 import domain.Menu;
 import domain.Table;
+import dto.OrderHistory;
 import java.util.List;
 
 public class OutputView {
@@ -42,6 +44,18 @@ public class OutputView {
     public static void printErrorMessage(String message) {
         System.out.println();
         System.out.printf(ErrorMessage.ERROR_MESSAGE_FORM, message);
+        System.out.println();
+    }
+
+    public static void printOrderHistory(List<OrderHistory> orderHistory) {
+        printTitleMessage(Message.ORDER_HISTORY);
+        System.out.println(Message.MENU_QUANTITY_PRICE);
+        orderHistory.forEach(System.out::println);
+    }
+
+    private static void printTitleMessage(String selectionTitle) {
+        System.out.println();
+        System.out.printf(Message.TITLE_MESSAGE_FORM, selectionTitle);
         System.out.println();
     }
 }

@@ -9,4 +9,6 @@ public class Message {
     public static final String REQUEST_TABLE_NUMBER = "테이블을 선택하세요.";
     public static final String REQUEST_REGISTER_MENU = "등록할 메뉴를 선택하세요.";
     public static final String REQUEST_MENU_QUANTITY = "메뉴의 수량을 입력하세요.";
+    public static final String ORDER_HISTORY = "주문 내역";
+    public static final String MENU_QUANTITY_PRICE = "메뉴 수량 금액";
 }

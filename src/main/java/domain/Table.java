@@ -2,8 +2,11 @@ package domain;
 
 import constant.Const;
 import constant.ErrorMessage;
+import dto.OrderHistory;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Table {
 
@@ -31,5 +34,20 @@ public class Table {
             throw new IllegalArgumentException(ErrorMessage.WRONG_MENU_QUANTITY);
         }
         menuAndQuantity.put(menu, currentQuantity);
+    }
+
+    public List<OrderHistory> createOrderHistory() {
+        return menuAndQuantity.keySet()
+                .stream()
+                .filter(menu -> menuAndQuantity.get(menu) != Const.EMPTY_MENU_QUANTITY)
+                .map(this::createOrderHistory)
+                .collect(Collectors.toList());
+    }
+
+    private OrderHistory createOrderHistory(Menu menu) {
+        String menuName = menu.getName();
+        int quantity = menuAndQuantity.get(menu);
+        int price = menu.getPrice();
+        return new OrderHistory(menuName, quantity, price);
     }
 }
