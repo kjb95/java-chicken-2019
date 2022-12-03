@@ -23,6 +23,10 @@ public class Menu {
         return this.number == number;
     }
 
+    public boolean isChicken() {
+        return category == Category.CHICKEN;
+    }
+
 
     public String getName() {
         return name;

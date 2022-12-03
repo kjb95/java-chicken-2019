@@ -1,5 +1,6 @@
 package service;
 
+import constant.ErrorMessage;
 import domain.Table;
 import domain.TableRepository;
 import dto.OrderHistory;
@@ -9,6 +10,9 @@ public class PaymentService {
 
     public List<OrderHistory> findOrderHistory(int tableNumber) {
         Table table = TableRepository.findTableByNumber(tableNumber);
+        if (table.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_TABLE);
+        }
         return table.createOrderHistory();
     }
 

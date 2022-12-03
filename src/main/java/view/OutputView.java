@@ -63,4 +63,10 @@ public class OutputView {
         String paymentProgress = String.format(Message.PAYMENT_PROGRESS_FORM, parseInt);
         printTitleMessage(paymentProgress);
     }
+
+    public static void printFinalPaymentAmount(int finalPrice) {
+        printTitleMessage(Message.FINAL_PAYMENT_AMOUNT);
+        System.out.printf(Message.PAYMENT_FORM, finalPrice);
+        System.out.println();
+    }
 }

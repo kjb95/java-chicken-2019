@@ -64,6 +64,7 @@ public class Table {
     private int countBundles() {
         return menuAndQuantity.keySet()
                 .stream()
+                .filter(Menu::isChicken)
                 .map(menu -> menuAndQuantity.get(menu))
                 .mapToInt(quantity -> quantity / Const.BUNDLE_SIZE)
                 .sum();
@@ -85,5 +86,9 @@ public class Table {
 
     public void clear() {
         menuAndQuantity = new HashMap<>();
+    }
+
+    public boolean isEmpty() {
+        return sumPrice() == 0;
     }
 }

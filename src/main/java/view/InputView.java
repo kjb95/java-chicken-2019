@@ -13,13 +13,7 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int inputTableNumber() {
-        System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
-    }
-
     private static void printTitleMessage(String selectionTitle) {
-        System.out.println();
         System.out.printf(Message.TITLE_MESSAGE_FORM, selectionTitle);
         System.out.println();
     }
@@ -31,6 +25,7 @@ public class InputView {
     }
 
     public static String requestMainScreenSelection() {
+        System.out.println();
         printTitleMessage(Message.MAIN_SCREEN);
         Arrays.stream(MainScreenSelection.values())
                 .map(MainScreenSelection::toKorean)
@@ -45,6 +40,7 @@ public class InputView {
         System.out.println();
         List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
+        System.out.println();
         printTitleMessage(Message.REQUEST_TABLE_NUMBER);
         String tableNumber = scanner.nextLine();
         TableNumberSelection.validate(tableNumber);
@@ -55,6 +51,7 @@ public class InputView {
         System.out.println();
         List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
+        System.out.println();
         printTitleMessage(Message.REQUEST_REGISTER_MENU);
         String menuNumber = scanner.nextLine();
         MenuSelection.validate(menuNumber);
@@ -62,6 +59,7 @@ public class InputView {
     }
 
     public static int requestMenuQuantity() {
+        System.out.println();
         printTitleMessage(Message.REQUEST_MENU_QUANTITY);
         int menuQuantity = scanner.nextInt();
         scanner.nextLine();
